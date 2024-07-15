@@ -1,4 +1,4 @@
 package com.example.ItemProject.model;
 
-public class ItemCategeoryModel {
+public class ItemCategeoryModel  {
 }
