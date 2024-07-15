@@ -10,7 +10,7 @@ public class ItemCategeoryDTO {
     @AllArgsConstructor
     @Data
     public static class ItemCategeoryDTOBuilder {
-        private int id;
+        private int ItemCategeoryID;
         private String name;
         private String description;
     }
