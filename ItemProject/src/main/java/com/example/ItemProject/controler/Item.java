@@ -3,10 +3,7 @@ package com.example.ItemProject.controler;
 import com.example.ItemProject.dto.ItemDTO;
 import com.example.ItemProject.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +20,22 @@ public class Item {
     public List<ItemDTO> getItem() {
         return itemService.getAllItem();
     }
+
+    //CREATE
+    @PostMapping("/addItem")
+    public ItemDTO addItem(@RequestBody ItemDTO itemDTO){
+        return itemService.addItem(itemDTO);
+    }
+
+    //UPDATE
+
+    @PutMapping("/updateItem/{id}")
+    public  ItemDTO updateItem(@RequestBody ItemDTO itemDTO ,@PathVariable int id){
+        try {
+            return itemService.updateItem(itemDTO,id);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
 }

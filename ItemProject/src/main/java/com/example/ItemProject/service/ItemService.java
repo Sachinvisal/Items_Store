@@ -23,4 +23,32 @@ public class ItemService {
         List<ItemModel> itemList = itemRepo.findAll();
         return modelMapper.map(itemList,new TypeToken<List<ItemDTO>>(){}.getType());
     }
+
+    public ItemDTO addItem(ItemDTO itemDTO){
+        itemRepo.save(modelMapper.map(itemDTO,ItemModel.class));
+        return  itemDTO;
+    }
+
+    public ItemDTO updateItem(ItemDTO itemDTO,int id){
+
+        try {
+            if (itemRepo.existsById(id)) {
+
+                ItemModel itemModel = new ItemModel();
+                itemModel.setItemId(id);
+                itemModel.setItemName(itemDTO.getItemName());
+                itemModel.setItemDescription(itemDTO.getItemDescription());
+                itemModel.setItemPrice(itemDTO.getItemPrice());
+                itemRepo.save(itemModel);
+                return itemDTO;
+            }
+            else {
+                return null;
+            }
+        }catch(Exception e){
+                return  null;
+        }
+
+    }
+
 }
