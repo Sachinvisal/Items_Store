@@ -28,7 +28,7 @@ public class ItemService {
         itemRepo.save(modelMapper.map(itemDTO,ItemModel.class));
         return  itemDTO;
     }
-
+     //UPDATE PART
     public ItemDTO updateItem(ItemDTO itemDTO,int id){
 
         try {
@@ -48,7 +48,5 @@ public class ItemService {
         }catch(Exception e){
                 return  null;
         }
-
     }
-
 }
