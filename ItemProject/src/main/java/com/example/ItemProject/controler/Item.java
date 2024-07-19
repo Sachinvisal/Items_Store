@@ -38,12 +38,4 @@ public class Item {
         }
     }
 
-    //DELETE
-    @DeleteMapping("/deleteItem/{id}")
-    public  void deleteItem(@PathVariable int id){
-             itemService.deleteItem(id);
-
-    }
-
-
 }
