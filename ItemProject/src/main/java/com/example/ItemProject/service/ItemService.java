@@ -19,15 +19,17 @@ public class ItemService {
     @Autowired
     private ModelMapper modelMapper;
 
+    //SHOW PART
     public List<ItemDTO>  getAllItem(){
         List<ItemModel> itemList = itemRepo.findAll();
         return modelMapper.map(itemList,new TypeToken<List<ItemDTO>>(){}.getType());
     }
-    //SHOW PART
+    //SAVE PART
     public ItemDTO addItem(ItemDTO itemDTO){
         itemRepo.save(modelMapper.map(itemDTO,ItemModel.class));
         return  itemDTO;
     }
+
      //UPDATE PART
     public ItemDTO updateItem(ItemDTO itemDTO,int id){
 
@@ -49,4 +51,10 @@ public class ItemService {
                 return  null;
         }
     }
+
+    //DELETE PART
+    public void deleteItem(int id) {
+      itemRepo.deleteById(id);
+    }
+
 }
