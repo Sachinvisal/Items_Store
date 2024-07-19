@@ -23,7 +23,7 @@ public class ItemService {
         List<ItemModel> itemList = itemRepo.findAll();
         return modelMapper.map(itemList,new TypeToken<List<ItemDTO>>(){}.getType());
     }
-
+    //SHOW PART
     public ItemDTO addItem(ItemDTO itemDTO){
         itemRepo.save(modelMapper.map(itemDTO,ItemModel.class));
         return  itemDTO;
