@@ -19,15 +19,17 @@ public class ItemService {
     @Autowired
     private ModelMapper modelMapper;
 
+    //SHOW PART
     public List<ItemDTO>  getAllItem(){
         List<ItemModel> itemList = itemRepo.findAll();
         return modelMapper.map(itemList,new TypeToken<List<ItemDTO>>(){}.getType());
     }
-    //SHOW PART
+    //SAVE PART
     public ItemDTO addItem(ItemDTO itemDTO){
         itemRepo.save(modelMapper.map(itemDTO,ItemModel.class));
         return  itemDTO;
     }
+
      //UPDATE PART
     public ItemDTO updateItem(ItemDTO itemDTO,int id){
 
@@ -47,6 +49,27 @@ public class ItemService {
             }
         }catch(Exception e){
                 return  null;
+        }
+    }
+
+    //DELETE PART
+    public ItemDTO deleteItem(ItemDTO itemDTO , int id){
+
+        try{
+            if(itemRepo.existsById(id)){
+                ItemModel itemModel = new ItemModel();
+                itemModel.setItemId(id);
+                itemModel.setItemName(itemDTO.getItemName());
+                itemModel.setItemDescription(itemDTO.getItemDescription());
+                itemModel.setItemPrice(itemDTO.getItemPrice());
+                itemRepo.delete(itemModel);
+                return itemDTO;
+            }
+            else {
+                return null;
+            }
+        }catch (Exception e){
+            return null;
         }
     }
 }

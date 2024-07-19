@@ -38,4 +38,16 @@ public class Item {
         }
     }
 
+    //DELETE
+    @DeleteMapping("/deleteItem/{id}")
+    public  ItemDTO deleteItem(@RequestBody ItemDTO itemDTO,@PathVariable int id){
+        try{
+            return itemService.deleteItem(itemDTO,id);
+        }catch (Exception e){
+            return  null;
+        }
+
+    }
+
+
 }
