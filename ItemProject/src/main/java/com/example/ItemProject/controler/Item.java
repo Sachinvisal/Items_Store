@@ -37,7 +37,7 @@ public class Item {
             return null;
         }
     }
-
+//DELETE
     @DeleteMapping("/dleleteItem/{id}")
     public void deleteItem(@PathVariable int id){
         itemService.deleteItem(id);
